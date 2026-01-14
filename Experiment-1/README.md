@@ -1,3 +1,20 @@
+### 23BIS70051
+### 23BIS-1(B)
+
+### Learning Outcomes
+
+After completing this experiment, students will be able to:
+
+1.  **Explain the core concepts of Single Page Application (SPA) architecture** and distinguish it from traditional multi-page web applications.
+    
+2.  **Set up and configure a modern frontend development environment** using Node.js, npm, Vite, and React for SPA development.
+    
+3.  **Design and develop reusable React components** using functional components and React hooks such as `useState` and `useEffect`.
+    
+4.  **Implement client-side routing** using React Router to enable seamless navigation without full page reloads.
+    
+5.  **Integrate external APIs and manage asynchronous data fetching**, including loading and error handling, within a React-based SPA.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
