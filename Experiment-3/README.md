@@ -1,27 +1,21 @@
-# React + Vite
+**Register Number:** 23BIS70051  
+**Class:** 23BIS-1(B)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## Learning Outcomes: Implement Routing in SPA
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1. Understand SPA Navigation Concepts
+Learners will be able to explain how routing works in a Single Page Application and how client-side navigation differs from traditional multi-page web applications.
 
-## React Compiler
+### 2. Configure Routing Using BrowserRouter
+Learners will be able to set up `BrowserRouter` to enable clean, URL-based navigation without full page reloads.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 3. Define and Manage Routes Using Routes and Route
+Learners will be able to map URLs to specific React components using `Routes` and `Route` for a well-structured application flow.
 
-## Expanding the ESLint configuration
+### 4. Implement Seamless Navigation Using Link
+Learners will be able to use the `Link` component to navigate between different views efficiently while preserving application state.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-
-## Learning Outcomes
-
-In this experiment, we learned how to:
-1.  **Implement Client-Side Routing**: Used `react-router-dom` to enable navigation without page reloads in a Single Page Application (SPA).
-2.  **Configure Router Components**:
-    -   `BrowserRouter`: Wraps the application to enable routing context.
-    -   `Routes`: Container for all route definitions.
-    -   `Route`: Defines the mapping between a URL path and a Component.
-    -   `Link`: Creates navigation links that update the URL without refreshing the page.
-3.  **Create Functional Components**: Built modular components (`Home`, `About`, `Contact`) to represent different views.
+### 5. Build a Modular and Scalable SPA Structure
+Learners will be able to organize components and routing logic in a maintainable and scalable manner to support future application growth.
