@@ -1,12 +1,8 @@
 ## 23BIS70051
 ## Class-23BIS-1(B)
 
-## Learning Outcomes
-
-- Understand the concept of component-based UI design.
-- Develop reusable and modular UI components.
-- Gain hands-on experience in designing common UI elements such as Button, TextField, Select, Rating, and Checkbox.
-- Learn to integrate newly created UI components into existing components.
-- Improve understanding of UI consistency and user interaction principles.
-- Enhance skills in managing component composition and reusability.
-- Apply frontend best practices while extending previously developed components.
+##Learning outcomes
+##Understand Single Page Application (SPA) concepts
+##Apply React fundamentals such as functional components, JSX, props, and state management to build modular web pages.
+##Use Material UI (MUI) components to design a clean and responsive user interface.
+##Implement client-side routing using React Router to enable URL-based navigation between pages
