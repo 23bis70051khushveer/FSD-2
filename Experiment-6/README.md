@@ -12,3 +12,7 @@
 
 - User Experience and Accessibility Awareness
   Learners will gain the ability to enhance usability and accessibility by applying proper labels, error messages, helper text, and feedback mechanisms aligned with Material Design standards.
+ 
+ ## SS:
+
+ <img width="1917" height="972" alt="image" src="https://github.com/user-attachments/assets/c41a8336-3173-4ba4-959f-d22c566c88ae" />
