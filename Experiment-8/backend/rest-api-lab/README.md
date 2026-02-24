@@ -15,3 +15,5 @@
 3. **Test APIs using Postman** — Developed skills in using Postman to send HTTP requests, validate API responses, and debug backend endpoints during development.
 
 4. **Deploy Backend Application on Cloud Platform** — Learned the process of deploying a Flask application on Render using Gunicorn as a production WSGI server, making the API publicly accessible.
+
+<img width="1441" height="841" alt="Screenshot 2026-02-24 095625" src="https://github.com/user-attachments/assets/3a5546ee-b246-4247-85fa-4f60b7d8251a" />
