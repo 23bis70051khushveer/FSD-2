@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: order-service-exp11
+    env: python
+    rootDir: Experiment-11/micro-services-lab/order_service
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn order_app:app
+
+  - type: web
+    name: customer-service-exp11
+    env: python
+    rootDir: Experiment-11/micro-services-lab/customer-service
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn customer_app:app
+    envVars:
+      - key: ORDER_SERVICE_URL
+        fromService:
+          type: web
+          name: order-service-exp11
+          envVarKey: RENDER_EXTERNAL_URL
