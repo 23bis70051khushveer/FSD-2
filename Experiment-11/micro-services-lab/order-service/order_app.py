@@ -1,9 +1,7 @@
 from flask import Flask, jsonify, request
-import os
 
 app = Flask(__name__)
 
-# In-memory orders data
 orders = [
     {
         "id": 1,
@@ -38,31 +36,37 @@ orders = [
     }
 ]
 
-@app.route("/orders", methods=["GET"])
-def get_all_orders():
-    return jsonify(orders), 200
 
-@app.route("/orders/user/<int:user_id>", methods=["GET"])
-def get_user_orders(user_id):
-    user_orders = [order for order in orders if order["user_id"] == user_id]
-    return jsonify(user_orders), 200
+@app.route("/orders/user/<int:user_id>")
+def get_orders_by_user(user_id):
+    user_orders = [o for o in orders if o["user_id"] == user_id]
+    return jsonify(user_orders)
 
-# Create API to update order status
+
 @app.route("/orders/<int:order_id>/status", methods=["PUT"])
 def update_order_status(order_id):
     data = request.get_json()
-    
-    if not data or "status" not in data:
-        return jsonify({"error": "Status is required in the request body"}), 400
-        
-    new_status = data.get("status")
 
+    new_status = data.get("order_status")
+
+    if not new_status:
+        return jsonify({"error": "order_status is required"}), 400
+
+    # Find order
     for order in orders:
         if order["id"] == order_id:
             order["order_status"] = new_status
-            return jsonify({"message": "Order status updated successfully", "order": order}), 200
+            return jsonify({
+                "message": "Order status updated successfully",
+                "order": order
+            })
 
     return jsonify({"error": "Order not found"}), 404
 
+@app.route("/")
+def home():
+    return jsonify({"service": "Order Service Running"})
+
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5002)), debug=True)
+    app.run(port=5002, debug=True)

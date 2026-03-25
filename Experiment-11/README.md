@@ -1,79 +1,217 @@
-# Experiment-11: Develop microservice-based backend module
+# Experiment 11 – Microservices-Based Backend Module
 
-## Project Overview
-This project consists of two microservices built using Python and Flask:
-1. **Customer Service**: Provides an API to fetch customer details along with their associated orders by communicating with the Order Service.
-2. **Order Service**: Provides APIs to get all orders for a specific user and update the status of an existing order.
+## Objective
+To develop a **microservices-based backend system** using Flask, where:
+- One service handles **Customer data**
+- Another service handles **Order data**
+- Services communicate using **HTTP requests**
 
-Both services store data in memory using variables.
+## Project Structure
 
-## Microservices Architecture
-- **Customer Service**: Runs on port `5001`. Communicates with the Order Service to retrieve order details for a customer.
-- **Order Service**: Runs on port `5002`.
+```
+micro-services-lab/
+│
+├── customer-service/
+│   ├── customer_app.py
+│   └── requirements.txt
+│
+├── order_service/
+│   ├── order_app.py
+│   └── requirements.txt
+│
+└── README.md
+```
 
-## API Endpoints
+## ⚙️ Technologies Used
+- Python (Flask)
+- Requests Library
+- Postman (API Testing)
+- Render (Deployment)
+
+## Microservices Overview
 
 ### 1. Customer Service
-- **GET `/customers/<user_id>/orders`**: Fetch customer details and their orders.
-  - *Example*: `http://localhost:5001/customers/101/orders`
+
+- Stores customer data (in-memory)
+- Fetches customer details
+- Calls Order Service to retrieve orders
+
+**Endpoint:** GET /customers/<user_id>/orders
 
 ### 2. Order Service
-- **GET `/orders/user/<user_id>`**: Fetch all orders for a specific user.
-  - *Example*: `http://localhost:5002/orders/user/101`
-- **PUT `/orders/<order_id>/status`**: Update the status of a specific order.
-  - *Example URL*: `http://localhost:5002/orders/1/status`
-  - *Headers*: `Content-Type: application/json`
-  - *Body*:
-    ```json
+
+- Stores order data (in-memory)
+- Retrieves orders for a user
+- Updates order status
+
+**Endpoints:**
+- GET /orders/user/<user_id>
+- PUT /orders/<order_id>/status
+
+## Source Code
+
+### Customer Service (`customer_app.py`)
+
+```python
+from flask import Flask, jsonify
+import requests
+
+app = Flask(__name__)
+
+customers = {
+    101: {"id": 101, "name": "Customer-1", "email": "customer-1@example.com"},
+    102: {"id": 102, "name": "Customer-2", "email": "customer-2@example.com"}
+}
+
+@app.route("/customers/<int:user_id>/orders")
+def get_account_details(user_id):
+    customer = customers.get(user_id)
+
+    if not customer:
+        return jsonify({"error": "Customer not found"}), 404
+
+    try:
+        response = requests.get(
+            f"https://two3bis70035-experiment-11-order.onrender.com/orders/user/{user_id}",
+            timeout=3
+        )
+
+        if response.status_code == 200:
+            orders = response.json()
+        else:
+            orders = []
+    except requests.exceptions.RequestException:
+        orders = []
+
+    return jsonify({
+        "customer": customer,
+        "orders": orders
+    })
+
+@app.route("/")
+def home():
+    return jsonify({"service": "Customer Service Running"})
+
+if __name__ == "__main__":
+    app.run(port=5001, debug=True)
+```
+
+---
+
+### Order Service (`order_app.py`)
+
+```python
+from flask import Flask, jsonify, request
+
+app = Flask(__name__)
+
+orders = [
     {
-        "status": "Delivered"
+        "id": 1,
+        "user_id": 101,
+        "order_date": "2026-02-20",
+        "order_amount": 2500,
+        "order_status": "Shipped",
+        "items": [
+            {"name": "Laptop", "quantity": 1, "price": 2000},
+            {"name": "Mouse", "quantity": 2, "price": 250}
+        ]
+    },
+    {
+        "id": 2,
+        "user_id": 101,
+        "order_date": "2026-02-22",
+        "order_amount": 1200,
+        "order_status": "Processing",
+        "items": [
+            {"name": "Keyboard", "quantity": 1, "price": 1200}
+        ]
+    },
+    {
+        "id": 3,
+        "user_id": 102,
+        "order_date": "2026-02-18",
+        "order_amount": 800,
+        "order_status": "Delivered",
+        "items": [
+            {"name": "Headphones", "quantity": 1, "price": 800}
+        ]
     }
-    ```
+]
 
-## Local Development & Testing
+@app.route("/orders/user/<int:user_id>")
+def get_orders_by_user(user_id):
+    user_orders = [o for o in orders if o["user_id"] == user_id]
+    return jsonify(user_orders)
 
-1. **Prerequisites**: Python 3.8+ installed.
+@app.route("/orders/<int:order_id>/status", methods=["PUT"])
+def update_order_status(order_id):
+    data = request.get_json()
+    new_status = data.get("order_status")
 
-2. **Run Order Service**:
-   ```bash
-   cd order_service
-   python -m venv venv-order
-   venv-order\Scripts\activate  # On Windows
-   # source venv-order/bin/activate  # On macOS/Linux
-   pip install -r requirements.txt
-   python order_app.py
+    if not new_status:
+        return jsonify({"error": "order_status is required"}), 400
+
+    for order in orders:
+        if order["id"] == order_id:
+            order["order_status"] = new_status
+            return jsonify({
+                "message": "Order status updated successfully",
+                "order": order
+            })
+
+    return jsonify({"error": "Order not found"}), 404
+
+@app.route("/")
+def home():
+    return jsonify({"service": "Order Service Running"})
+
+if __name__ == "__main__":
+    app.run(port=5002, debug=True)
+```
+
+---
+
+## Deployment Links
+
+- Customer Service: https://two3bis70035-experiment-11-customer.onrender.com
+- Order Service: https://two3bis70035-experiment-11-order.onrender.com
+
+## Working Flow
+
+1. Client sends request:
+
    ```
-
-3. **Run Customer Service** (in a new terminal):
-   ```bash
-   cd customer-service
-   python -m venv venv-customer
-   venv-customer\Scripts\activate  # On Windows
-   # source venv-customer/bin/activate  # On macOS/Linux
-   pip install -r requirements.txt
-   python customer_app.py
+   /customers/101/orders
    ```
+2. Customer Service fetches customer data
+3. Calls Order Service API
+4. Combines response and returns JSON
 
-4. **Testing with Postman**:
-   - Access the APIs running on `localhost:5001` and `localhost:5002` using Postman.
-   - For the `PUT` request, ensure you send a JSON body with the new `status`.
+## Screenshots
 
-## Deployment (Render)
-Both microservices can be deployed independently on Render as Web Services.
+### 1. Customer Service Running
+![Customer Service](Screenshots/1.png)
 
-**Render Setup for Order Service:**
-- **Build Command**: `pip install -r requirements.txt`
-- **Start Command**: `gunicorn order_app:app`
-- **Environment Variables**: `PORT` (assigned by Render)
+### 2. Order Service Running
+![User 101 Orders](Screenshots/2.png)
 
-**Render Setup for Customer Service:**
-- **Build Command**: `pip install -r requirements.txt`
-- **Start Command**: `gunicorn customer_app:app`
-- **Environment Variables**:
-  - `PORT`: (assigned by Render)
-  - `ORDER_SERVICE_URL`: `<Render URL of your deployed Order Service>`
+### 3. Fetch Orders (User 101)
+![User 102 Orders](Screenshots/3.png)
 
-## Submission
-- Includes code for both microservices.
-- Screenshots of Postman tests included in the submitted zip file.
-- Demo links for deployed services on Render.
+### 4. Fetch Orders (User 102)
+![Update Status](Screenshots/4.png)
+
+### 5. Update Order Status
+![Order Service](Screenshots/5.png)
+
+
+## Learning Outcomes
+* Understood Microservices Architecture
+* Implemented Service-to-Service Communication
+* Built REST APIs using Flask
+* Learned GET and PUT methods
+* Worked with in-memory data storage
+* Deployed services using Render
+* Tested APIs using Postman
+* Learned error handling in APIs
