@@ -1,0 +1,16 @@
+# Virtual Environments
+venv/
+venv-*/
+__pycache__/
+*.pyc
+
+# IDEs and Editors
+.vscode/
+.idea/
+
+# Microservices Lab
+micro-services-lab/customer-service/venv-customer/
+micro-services-lab/order_service/venv-order/
+
+# Any zip files if they shouldn't be tracked (though the user might want them tracked)
+# *.zip

@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "f5f0b4d4-53ce-4200-aae2-82352125e839",
+		"name": "Microservices Lab - Experiment 11",
+		"description": "Postman collection to test Customer and Order services.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Customer Service",
+			"item": [
+				{
+					"name": "Get Customer Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/customers/101/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"customers",
+								"101",
+								"orders"
+							]
+						},
+						"description": "Fetch customer details along with their orders"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order Service",
+			"item": [
+				{
+					"name": "Get User Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/orders/user/101",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"orders",
+								"user",
+								"101"
+							]
+						},
+						"description": "Get all orders for a specific user ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Order Status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"Delivered\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5002/orders/1/status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"orders",
+								"1",
+								"status"
+							]
+						},
+						"description": "Update status of a specific order"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
