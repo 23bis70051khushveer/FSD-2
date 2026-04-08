@@ -1,0 +1,96 @@
+{
+  "info": {
+    "name": "Student CRUD API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "d9f2c1e5-4b3a-4c9a-8f2e-1a2b3c4d5e6f"
+  },
+  "item": [
+    {
+      "name": "Create Student",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/students",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["students"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"uid\": \"U12345\",\n  \"name\": \"John Doe\",\n  \"age\": 22\n}"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Students",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/students",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["students"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Student By ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/students/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["students", "{{id}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Student",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/students/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["students", "{{id}}"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Jane Doe\",\n  \"age\": 23\n}"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Student",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/students/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["students", "{{id}}"]; 
+        }
+      },
+      "response": []
+    }
+  ]
+}
