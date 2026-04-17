@@ -1,175 +1,31 @@
 # 🎓 Student Management REST API (Flask + PostgreSQL)
+## 23BIS70051
 
-A production-ready REST API built using **Flask**, **SQLAlchemy**, and **Marshmallow** for managing student records.
-This API supports full CRUD operations, validation, pagination, and is deployable on platforms like **Render**.
+## Learning Outcomes:-
+🎯 Learning Outcomes
+# Mastered REST API Design
+- Learned how to structure scalable and clean RESTful endpoints with proper HTTP methods and status codes.
+# Hands-on ORM Experience (SQLAlchemy)
+- Gained practical experience in mapping Python objects to relational databases and handling queries efficiently.
+# Implemented Data Validation (Marshmallow)
+- Understood schema-based validation, serialization, and enforcing business rules like unique UID and field constraints.
+# Database Integration & Environment Handling
+- Worked with PostgreSQL for production and SQLite for local testing, using environment-based configurations.
+# Built Production-Ready Backend
+- Implemented pagination, structured error handling, health checks, and deployment using Gunicorn on Render.
 
----
+SS:- 
+<img width="1332" height="675" alt="Screenshot 2026-04-08 152536" src="https://github.com/user-attachments/assets/3fe8c1e5-adb7-4680-92cd-dad167c3a412" />
 
-## 🚀 Features
+<img width="1337" height="793" alt="Screenshot 2026-04-08 152546" src="https://github.com/user-attachments/assets/cca00de9-216b-4f31-8410-e40c52e78520" />
 
-- ✅ RESTful API design
-- ✅ CRUD operations (Create, Read, Update, Delete)
-- ✅ Input validation using Marshmallow
-- ✅ PostgreSQL support (Render-ready)
-- ✅ SQLite fallback for local testing
-- ✅ Pagination support
-- ✅ Structured error handling
-- ✅ Health check endpoint
-- ✅ Production-ready configuration
+<img width="1346" height="835" alt="Screenshot 2026-04-08 152555" src="https://github.com/user-attachments/assets/b6aef9ce-dc4b-47fa-875b-d89db0a4bab2" />
 
----
+<img width="1336" height="698" alt="Screenshot 2026-04-08 152641" src="https://github.com/user-attachments/assets/e1595f02-95af-4a8d-acba-6f819b2fa4fc" />
 
-## 🛠️ Tech Stack
+<img width="1339" height="790" alt="Screenshot 2026-04-08 152651" src="https://github.com/user-attachments/assets/856afc57-4292-43c6-b0bd-609baf6c414e" />
 
-- **Backend:** Flask
-- **Database:** PostgreSQL / SQLite
-- **ORM:** SQLAlchemy
-- **Validation:** Marshmallow
-- **Server:** Gunicorn
+<img width="1340" height="722" alt="Screenshot 2026-04-08 152706" src="https://github.com/user-attachments/assets/3c2c83e8-1a17-4a18-bacb-19ca4b02555f" />
 
----
 
-## 📂 Project Structure
 
-```
-.
-├── app.py
-├── requirements.txt
-├── runtime.txt
-└── README.md
-```
-
----
-
-## ⚙️ Installation & Setup
-
-### 🔹 1. Clone Repository
-
-```
-git clone https://github.com/Amrit08-dot/student-api.git
-cd student-api
-```
-
----
-
-### 🔹 2. Create Virtual Environment
-
-```
-python -m venv venv
-venv\Scripts\activate      # Windows
-```
-
----
-
-### 🔹 3. Install Dependencies
-
-```
-pip install -r requirements.txt
-```
-
----
-
-## 📌 API Endpoints
-
-### 🔹 Base URL
-
-https://two3bis70062-experiment-13.onrender.com/
-
-### 🟢 1. Checking working of the backend
-
-![Customer Service](Screenshots/0.png)
-
-### 🟢 2. Create Student
-
-![Customer Service](Screenshots/1.png)
-
-### 🟢 3. Getting All Students
-
-![Customer Service](Screenshots/5.png)
-
-### 🟢 4. Get Single Student
-
-![Customer Service](Screenshots/2.png)
-
-### 🟢 5. Update Student
-
-![Customer Service](Screenshots/3.png)
-
-### 🟢 6. Delete Student
-
-![Customer Service](Screenshots/4.png)
-
-## 🔒 Validation Rules
-
-- **Name:** Minimum 2 characters
-- **Age:** 1–120
-- **UID:** Minimum 3 characters, unique
-
----
-
-## Database
-
-![Customer Service](Screenshots/7.png)
-
-## ⚠️ Error Handling
-
-- `400` → Validation / Duplicate UID
-- `404` → Resource not found
-- `500` → Server error
-
-Example:
-
-![Customer Service](Screenshots/6.png)
-
-## 🚀 Deployment (Render)
-
-### 🔹 Start Command
-
-```
-gunicorn app:app
-```
-
-### 🔹 runtime.txt
-
-```
-python-3.11.9
-```
-
-### 🔹 requirements.txt (important)
-
-```
-flask
-gunicorn
-sqlalchemy
-marshmallow
-psycopg2-binary
-setuptools
-```
-
----
-
-## 🧠 Key Concepts Implemented
-
-- REST API Design
-- ORM (SQLAlchemy)
-- Data Validation (Marshmallow)
-- Pagination
-- Error Handling
-- Environment-based configuration
-
----
-
-## 📈 Future Improvements
-
-- 🔐 JWT Authentication
-- 👤 User roles & authorization
-- 📊 Logging & monitoring
-- 🧪 Unit testing
-- 📦 Docker support
-
----
-
-## 👨‍💻 Author
-
-Amrit Singh Nijjar
-23BIS70062
