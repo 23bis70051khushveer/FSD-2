@@ -1,31 +1,5 @@
 ## Experiment No. 8 - Develop RESTful APIs using Backend Framework (Flask)
-
-### Project Structure
-
-```bash
-Experiment_8/
-├── routes/
-│   └── student_routes.py
-├── venv/
-│   ├── Include/
-│   ├── Lib/
-│   └── Scripts/
-├── requirements.txt
-├── app.py
-├── run.py
-└── README.md
-```
-
-### Technologies Used
-
-- Python
-- Flask
-- REST API
-- Postman
-- Render (Cloud Deployment)
-- Virtual Environment (venv)
-
-### Deployment Base URL --> [Render Link](https://two3bis70035-experiment-8.onrender.com)
+## 23BIS70051
 
 
 ## STEPS & SCREENSHOTS
